@@ -8,7 +8,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
       <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10" />
       
       <div className="container mx-auto px-4 py-20 relative z-10">
