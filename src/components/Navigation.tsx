@@ -48,7 +48,7 @@ const Navigation = () => {
             }}
             className="font-display text-xl font-bold text-foreground"
           >
-            Ahluma Nkqayi
+            AN
           </a>
 
           {/* Desktop Navigation */}
