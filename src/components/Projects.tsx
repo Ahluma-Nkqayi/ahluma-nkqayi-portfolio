@@ -14,8 +14,7 @@ const Projects = () => {
       image: libraryImage,
       tags: ["Java", "MySQL", "UI/UX"],
       links: {
-        github: "#",
-        figma: "#"
+        github: "https://github.com/Ahluma-Nkqayi/Library-Management-System.git"
       }
     },
     {
@@ -24,18 +23,16 @@ const Projects = () => {
       image: medicareImage,
       tags: ["HTML", "CSS", "JavaScript", "MySQL"],
       links: {
-        github: "#",
-        figma: "#"
+        github: "https://github.com/Ahluma-Nkqayi/Medicare_Booking_System.git"
       }
     },
     {
-      title: "AI Chatbot",
-      description: "An intelligent chatbot that answers general AI-related questions using natural language processing.",
+      title: "Random Forest Salary Prediction",
+      description: "Machine learning model using Random Forest algorithm to predict salaries based on various features and data analysis.",
       image: chatbotImage,
-      tags: ["Python", "Machine Learning", "NLP"],
+      tags: ["Python", "Machine Learning", "Data Science"],
       links: {
-        github: "#",
-        live: "#"
+        github: "https://github.com/Ahluma-Nkqayi/Random-Forest-Salary-Prediction.git"
       }
     },
     {
@@ -44,8 +41,7 @@ const Projects = () => {
       image: resumeImage,
       tags: ["React", "TypeScript", "Tailwind CSS"],
       links: {
-        github: "#",
-        live: "#"
+        github: "https://github.com/Ahluma-Nkqayi/Resume-Generator.git"
       }
     }
   ];
@@ -105,29 +101,10 @@ const Projects = () => {
                       variant="outline" 
                       size="sm"
                       className="border-primary/30 hover:border-primary hover:bg-primary/5"
+                      onClick={() => window.open(project.links.github, "_blank")}
                     >
                       <Github className="h-4 w-4 mr-2" />
                       GitHub
-                    </Button>
-                  )}
-                  {project.links.figma && (
-                    <Button 
-                      variant="outline" 
-                      size="sm"
-                      className="border-primary/30 hover:border-primary hover:bg-primary/5"
-                    >
-                      <Figma className="h-4 w-4 mr-2" />
-                      Figma
-                    </Button>
-                  )}
-                  {project.links.live && (
-                    <Button 
-                      variant="outline" 
-                      size="sm"
-                      className="border-primary/30 hover:border-primary hover:bg-primary/5"
-                    >
-                      <ExternalLink className="h-4 w-4 mr-2" />
-                      Live Demo
                     </Button>
                   )}
                 </div>

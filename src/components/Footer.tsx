@@ -5,8 +5,8 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { icon: Github, label: "GitHub", href: "#" },
-    { icon: Linkedin, label: "LinkedIn", href: "#" },
+    { icon: Github, label: "GitHub", href: "https://github.com/Ahluma-Nkqayi" },
+    { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/ahluma-nkqayi-532916234" },
     { icon: Figma, label: "Figma", href: "#" }
   ];
 
