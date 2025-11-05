@@ -5,24 +5,48 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const Contact = () => {
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: ""
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
     
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for reaching out. I'll get back to you soon!",
-    });
-    
-    setFormData({ name: "", email: "", message: "" });
+    try {
+      const { error } = await supabase.functions.invoke('send-contact-email', {
+        body: {
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        },
+      });
+
+      if (error) throw error;
+
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for reaching out. I'll get back to you soon!",
+      });
+      
+      setFormData({ name: "", email: "", message: "" });
+    } catch (error) {
+      console.error('Error sending message:', error);
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again or email me directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -86,18 +110,19 @@ const Contact = () => {
 
             <Button
               type="submit"
+              disabled={isSubmitting}
               className="w-full bg-gradient-to-r from-primary to-accent hover:shadow-glow transition-all duration-300"
               size="lg"
             >
               <Send className="mr-2 h-5 w-5" />
-              Send Message
+              {isSubmitting ? "Sending..." : "Send Message"}
             </Button>
           </form>
 
           <div className="mt-8 pt-8 border-t border-primary/20 text-center">
             <div className="flex items-center justify-center gap-2 text-muted-foreground">
               <Mail className="h-5 w-5" />
-              <span>ahluma.nkqayi@example.com</span>
+              <span>ahlumankqayi@gmail.com</span>
             </div>
           </div>
         </Card>
