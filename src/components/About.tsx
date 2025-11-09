@@ -8,14 +8,13 @@ const About = () => {
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-6" />
           <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-            I'm a passionate developer currently in my third year of the Diploma in ICT: Applications Development. 
-            My journey in technology has been driven by curiosity and a desire to create meaningful 
-            solutions that make a difference.
+            Hi, I'm Ahluma — a passionate developer and innovator who loves turning ideas into real, working applications.
+          </p>
+          <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+            I enjoy building systems that solve real-world problems, whether it's developing user-friendly web apps or creating machine learning models that make data meaningful.
           </p>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            With a strong foundation in both frontend and backend development, machine learning, 
-            and project management, I thrive on building applications that solve real-world problems. 
-            I'm constantly learning, growing, and seeking opportunities to contribute to innovative projects.
+            When I'm not coding, I love learning new tools, exploring design trends, and finding creative ways to improve my projects. I believe that great software isn't just about code — it's about impact.
           </p>
         </div>
       </div>

@@ -14,20 +14,18 @@ const Hero = () => {
       <div className="container mx-auto px-4 py-20 relative z-10">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6 animate-fade-in">
-            <div className="space-y-2">
+            <div className="space-y-3">
               <p className="text-accent font-medium text-lg">Hello, I'm</p>
               <h1 className="font-display text-5xl md:text-7xl font-bold text-foreground">
                 Ahluma Nkqayi
               </h1>
-              <p className="text-2xl md:text-3xl text-muted-foreground font-light">
+              <p className="text-xl md:text-2xl text-muted-foreground font-light">
                 Developer & Innovator
               </p>
+              <p className="text-base md:text-lg text-foreground/80 font-normal">
+                Focused on full-stack development and data-driven solutions.
+              </p>
             </div>
-            
-            <p className="text-lg text-muted-foreground leading-relaxed max-w-lg">
-              Third-year ICT Applications Development student passionate about creating innovative solutions 
-              through code, design, and technology.
-            </p>
             
             <div className="flex flex-wrap gap-4">
               <Button 
@@ -68,13 +66,16 @@ const Hero = () => {
         </div>
       </div>
       
-      <button 
-        onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer hover:text-primary transition-colors"
-        aria-label="Scroll to About section"
-      >
-        <ArrowDown className="h-8 w-8 text-primary/50" />
-      </button>
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
+        <span className="text-sm text-muted-foreground">Scroll to explore</span>
+        <button 
+          onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
+          className="cursor-pointer hover:text-primary transition-colors"
+          aria-label="Scroll to About section"
+        >
+          <ArrowDown className="h-8 w-8 text-primary/50" />
+        </button>
+      </div>
     </section>
   );
 };
