@@ -53,13 +53,13 @@ const Hero = () => {
             </div>
           </div>
           
-          <div className="relative animate-slide-up">
+          <div className="relative animate-slide-up max-w-md mx-auto">
             <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-accent/20 rounded-3xl blur-2xl" />
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white/50">
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white/50 max-h-[400px]">
               <img 
                 src={heroImage} 
                 alt="Ahluma Nkqayi" 
-                className="w-full h-auto object-cover"
+                className="w-full h-full object-cover"
               />
             </div>
           </div>
