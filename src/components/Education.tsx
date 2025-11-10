@@ -1,7 +1,37 @@
-import { GraduationCap, Award, BookOpen } from "lucide-react";
+import { GraduationCap, Award, BookOpen, Download } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 const Education = () => {
+  const [showCertificates, setShowCertificates] = useState(false);
+
+  const certificates = [
+    {
+      title: "Emotional Intelligence",
+      file: "/certificates/emotional-intelligence.pdf"
+    },
+    {
+      title: "Enhancing Communication Skills",
+      file: "/certificates/enhancing-communication-skills.pdf"
+    },
+    {
+      title: "Finding Your Professional Voice",
+      file: "/certificates/finding-professional-voice.pdf"
+    },
+    {
+      title: "Introduction to Personal Branding",
+      file: "/certificates/introduction-personal-branding.pdf"
+    }
+  ];
+
   const education = [
     {
       icon: GraduationCap,
@@ -66,11 +96,51 @@ const Education = () => {
             Completed a comprehensive Work Readiness Workshop by Gateway Consultancy and 
             Professional Development, gaining essential workplace skills and professional competencies.
           </p>
-          <div className="flex items-center gap-2 text-accent font-medium">
+          <button
+            onClick={() => setShowCertificates(true)}
+            className="flex items-center gap-2 text-accent font-medium hover:text-accent/80 transition-colors cursor-pointer"
+          >
             <Award className="h-5 w-5" />
-            <span>17 Modules Completed on Coursera</span>
-          </div>
+            <span className="underline decoration-dotted">17 Modules Completed on Coursera</span>
+          </button>
         </Card>
+
+        <Dialog open={showCertificates} onOpenChange={setShowCertificates}>
+          <DialogContent className="max-w-2xl">
+            <DialogHeader>
+              <DialogTitle className="font-display text-2xl">Coursera Certificates</DialogTitle>
+              <DialogDescription>
+                View and download my completed Coursera module certificates
+              </DialogDescription>
+            </DialogHeader>
+            <div className="grid gap-3 mt-4">
+              {certificates.map((cert, index) => (
+                <div
+                  key={index}
+                  className="flex items-center justify-between p-4 border rounded-lg hover:bg-muted/50 transition-colors"
+                >
+                  <div className="flex items-center gap-3">
+                    <Award className="h-5 w-5 text-accent" />
+                    <span className="font-medium">{cert.title}</span>
+                  </div>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => {
+                      const link = document.createElement('a');
+                      link.href = cert.file;
+                      link.download = `${cert.title}.pdf`;
+                      link.click();
+                    }}
+                  >
+                    <Download className="h-4 w-4 mr-2" />
+                    Download
+                  </Button>
+                </div>
+              ))}
+            </div>
+          </DialogContent>
+        </Dialog>
       </div>
     </section>
   );
