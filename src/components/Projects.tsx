@@ -5,6 +5,8 @@ import libraryImage from "@/assets/library-project.jpg";
 import medicareImage from "@/assets/medicare-project.jpg";
 import chatbotImage from "@/assets/chatbot-project.jpg";
 import resumeImage from "@/assets/resume-project.jpg";
+import youthPrototypeImage from "@/assets/youth-prototype.jpg";
+import sentimentDashboardImage from "@/assets/sentiment-dashboard.jpg";
 
 const Projects = () => {
   const projects = [
@@ -24,6 +26,33 @@ const Projects = () => {
       tags: ["HTML", "CSS", "JavaScript", "MySQL"],
       links: {
         github: "https://github.com/Ahluma-Nkqayi/Medicare_Booking_System.git"
+      }
+    },
+    {
+      title: "AI Chatbot",
+      description: "Interactive chatbot powered by artificial intelligence to answer general AI questions with natural language processing capabilities.",
+      image: chatbotImage,
+      tags: ["AI", "Natural Language Processing", "Chatbot"],
+      links: {
+        demo: "https://landbot.online/v3/H-3158721-8RT63U43IP36BDKN/index.html"
+      }
+    },
+    {
+      title: "Youth in Power Prototype",
+      description: "Educational platform prototype designed to empower youth with interactive learning modules and engagement features.",
+      image: youthPrototypeImage,
+      tags: ["Figma", "UI/UX Design", "Prototype"],
+      links: {
+        figma: "https://www.figma.com/proto/JHN39GavsiQxhZcvp4OgKV/Youth-in-Power-Teachable-Machine?node-id=22-121&t=nNaSaFM8NZNr9MLe-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A4&show-proto-sidebar=1"
+      }
+    },
+    {
+      title: "Sentiment Analysis Dashboard",
+      description: "AI-powered analytics dashboard for real-time sentiment detection and visualization of emotional patterns in data.",
+      image: sentimentDashboardImage,
+      tags: ["AI", "Data Analytics", "Dashboard"],
+      links: {
+        demo: "https://sentiment-ai-1682327a.base44.app/"
       }
     },
     {
@@ -105,6 +134,28 @@ const Projects = () => {
                     >
                       <Github className="h-4 w-4 mr-2" />
                       GitHub
+                    </Button>
+                  )}
+                  {project.links.demo && (
+                    <Button 
+                      variant="outline" 
+                      size="sm"
+                      className="border-primary/30 hover:border-primary hover:bg-primary/5"
+                      onClick={() => window.open(project.links.demo, "_blank")}
+                    >
+                      <ExternalLink className="h-4 w-4 mr-2" />
+                      Live Demo
+                    </Button>
+                  )}
+                  {project.links.figma && (
+                    <Button 
+                      variant="outline" 
+                      size="sm"
+                      className="border-primary/30 hover:border-primary hover:bg-primary/5"
+                      onClick={() => window.open(project.links.figma, "_blank")}
+                    >
+                      <Figma className="h-4 w-4 mr-2" />
+                      Prototype
                     </Button>
                   )}
                 </div>
