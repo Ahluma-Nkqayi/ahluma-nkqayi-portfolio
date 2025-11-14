@@ -1,58 +1,11 @@
-import { useState } from "react";
+import { Mail, Phone, Github, Linkedin } from "lucide-react";
 import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Mail, Send } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
+
 const Contact = () => {
-  const {
-    toast
-  } = useToast();
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: ""
-  });
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    try {
-      const {
-        error
-      } = await supabase.functions.invoke('send-contact-email', {
-        body: {
-          name: formData.name,
-          email: formData.email,
-          message: formData.message
-        }
-      });
-      if (error) throw error;
-      toast({
-        title: "Message Sent!",
-        description: "Thank you for reaching out. I'll get back to you soon!"
-      });
-      setFormData({
-        name: "",
-        email: "",
-        message: ""
-      });
-    } catch (error) {
-      console.error('Error sending message:', error);
-      toast({
-        title: "Error",
-        description: "Failed to send message. Please try again or email me directly.",
-        variant: "destructive"
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-  return <section id="contact" className="py-20 bg-gradient-to-b from-background to-muted/30">
+  return (
+    <section id="contact" className="py-20 bg-gradient-to-b from-background to-muted/30">
       <div className="container mx-auto px-4">
-        <div className="max-w-3xl mx-auto text-center mb-16 animate-fade-in">
+        <div className="max-w-3xl mx-auto text-center mb-12 animate-fade-in">
           <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
             Get In Touch
           </h2>
@@ -62,56 +15,59 @@ const Contact = () => {
           </p>
         </div>
 
-        <Card className="max-w-2xl mx-auto p-8 border-primary/20 bg-card/50 backdrop-blur-sm">
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
-              <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
-                Name
-              </label>
-              <Input id="name" value={formData.name} onChange={e => setFormData({
-              ...formData,
-              name: e.target.value
-            })} placeholder="Your name" required className="border-primary/20 focus:border-primary" />
+        <Card className="max-w-2xl mx-auto p-12 border-primary/20 bg-card/50 backdrop-blur-sm">
+          <div className="space-y-8">
+            {/* Email */}
+            <div className="flex items-center justify-center gap-3 text-center">
+              <Mail className="h-5 w-5 text-primary" />
+              <a 
+                href="mailto:ahlumankqayi@gmail.com" 
+                className="text-lg text-foreground hover:text-primary transition-colors font-medium"
+              >
+                ahlumankqayi@gmail.com
+              </a>
             </div>
 
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-                Email
-              </label>
-              <Input id="email" type="email" value={formData.email} onChange={e => setFormData({
-              ...formData,
-              email: e.target.value
-            })} placeholder="your.email@example.com" required className="border-primary/20 focus:border-primary" />
+            {/* Phone */}
+            <div className="flex items-center justify-center gap-3 text-center">
+              <Phone className="h-5 w-5 text-primary" />
+              <a 
+                href="tel:0737155639" 
+                className="text-lg text-foreground hover:text-primary transition-colors font-medium"
+              >
+                073 715 5639
+              </a>
             </div>
 
-            <div>
-              <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
-                Message
-              </label>
-              <Textarea id="message" value={formData.message} onChange={e => setFormData({
-              ...formData,
-              message: e.target.value
-            })} placeholder="Your message..." required rows={6} className="border-primary/20 focus:border-primary resize-none" />
+            {/* Social Links */}
+            <div className="pt-8 border-t border-primary/20">
+              <p className="text-sm text-muted-foreground mb-4 text-center">Connect with me</p>
+              <div className="flex justify-center gap-6">
+                <a 
+                  href="https://www.linkedin.com/in/ahluma-nkqayi-532916234" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-foreground hover:text-primary transition-colors"
+                >
+                  <Linkedin className="h-5 w-5" />
+                  <span className="font-medium">LinkedIn</span>
+                </a>
+                <a 
+                  href="https://github.com/Ahluma-Nkqayi" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-foreground hover:text-primary transition-colors"
+                >
+                  <Github className="h-5 w-5" />
+                  <span className="font-medium">GitHub</span>
+                </a>
+              </div>
             </div>
-
-            <Button type="submit" disabled={isSubmitting} className="w-full bg-gradient-to-r from-primary to-accent hover:shadow-glow transition-all duration-300" size="lg">
-              <Send className="mr-2 h-5 w-5" />
-              {isSubmitting ? "Sending..." : "Send Message"}
-            </Button>
-          </form>
-
-          <div className="mt-8 pt-8 border-t border-primary/20 text-center">
-            <p className="text-sm text-muted-foreground mb-2">Or reach me directly at:</p>
-            <a 
-              href="mailto:ahlumankqayi@gmail.com" 
-              className="inline-flex items-center gap-2 text-foreground hover:text-primary transition-colors"
-            >
-              <Mail className="h-4 w-4" />
-              <span className="font-medium">ahlumankqayi@gmail.com</span>
-            </a>
           </div>
         </Card>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default Contact;
