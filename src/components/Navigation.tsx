@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useTheme } from "@/hooks/use-theme";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -66,21 +68,46 @@ const Navigation = () => {
                 {item.label}
               </a>
             ))}
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={toggleTheme}
+              className="ml-2 hover:bg-primary/10 transition-all duration-300"
+            >
+              {theme === "light" ? (
+                <Moon className="h-5 w-5 rotate-0 scale-100 transition-all duration-300" />
+              ) : (
+                <Sun className="h-5 w-5 rotate-0 scale-100 transition-all duration-300" />
+              )}
+            </Button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="md:hidden"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? (
-              <X className="h-5 w-5" />
-            ) : (
-              <Menu className="h-5 w-5" />
-            )}
-          </Button>
+          {/* Mobile Menu Button & Theme Toggle */}
+          <div className="md:hidden flex items-center gap-2">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={toggleTheme}
+              className="hover:bg-primary/10 transition-all duration-300"
+            >
+              {theme === "light" ? (
+                <Moon className="h-5 w-5 transition-all duration-300" />
+              ) : (
+                <Sun className="h-5 w-5 transition-all duration-300" />
+              )}
+            </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? (
+                <X className="h-5 w-5" />
+              ) : (
+                <Menu className="h-5 w-5" />
+              )}
+            </Button>
+          </div>
         </div>
 
         {/* Mobile Menu */}
