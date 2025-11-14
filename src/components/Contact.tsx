@@ -101,7 +101,14 @@ const Contact = () => {
           </form>
 
           <div className="mt-8 pt-8 border-t border-primary/20 text-center">
-            
+            <p className="text-sm text-muted-foreground mb-2">Or reach me directly at:</p>
+            <a 
+              href="mailto:ahlumankqayi@gmail.com" 
+              className="inline-flex items-center gap-2 text-foreground hover:text-primary transition-colors"
+            >
+              <Mail className="h-4 w-4" />
+              <span className="font-medium">ahlumankqayi@gmail.com</span>
+            </a>
           </div>
         </Card>
       </div>
