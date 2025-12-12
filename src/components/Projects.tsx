@@ -88,11 +88,11 @@ const Projects = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {projects.map((project, index) => (
             <Card 
               key={index}
-              className="overflow-hidden hover:shadow-hover transition-all duration-500 border-primary/20 hover:-translate-y-2 bg-card group"
+              className="overflow-hidden hover:shadow-hover transition-all duration-500 border-primary/20 hover:-translate-y-1 bg-card group"
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <div className="relative overflow-hidden">
@@ -100,39 +100,39 @@ const Projects = () => {
                 <img 
                   src={project.image} 
                   alt={project.title}
-                  className="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500"
+                  className="w-full h-40 object-cover transform group-hover:scale-110 transition-transform duration-500"
                 />
               </div>
               
-              <div className="p-6 space-y-4">
-                <h3 className="font-display text-2xl font-semibold text-foreground group-hover:text-primary transition-colors">
+              <div className="p-4 space-y-2">
+                <h3 className="font-display text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
                   {project.title}
                 </h3>
                 
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="text-sm text-muted-foreground leading-relaxed line-clamp-2">
                   {project.description}
                 </p>
                 
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1.5">
                   {project.tags.map((tag, i) => (
                     <span 
                       key={i}
-                      className="px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full"
+                      className="px-2 py-0.5 text-[10px] font-medium bg-primary/10 text-primary rounded-full"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
                 
-                <div className="flex gap-3 pt-2">
+                <div className="flex gap-2 pt-1">
                   {project.links.github && (
                     <Button 
                       variant="outline" 
                       size="sm"
-                      className="border-primary/30 hover:border-primary hover:bg-primary/5"
+                      className="h-7 text-xs border-primary/30 hover:border-primary hover:bg-primary/5"
                       onClick={() => window.open(project.links.github, "_blank")}
                     >
-                      <Github className="h-4 w-4 mr-2" />
+                      <Github className="h-3 w-3 mr-1" />
                       GitHub
                     </Button>
                   )}
@@ -140,21 +140,21 @@ const Projects = () => {
                     <Button 
                       variant="outline" 
                       size="sm"
-                      className="border-primary/30 hover:border-primary hover:bg-primary/5"
+                      className="h-7 text-xs border-primary/30 hover:border-primary hover:bg-primary/5"
                       onClick={() => window.open(project.links.demo, "_blank")}
                     >
-                      <ExternalLink className="h-4 w-4 mr-2" />
-                      Live Demo
+                      <ExternalLink className="h-3 w-3 mr-1" />
+                      Demo
                     </Button>
                   )}
                   {project.links.figma && (
                     <Button 
                       variant="outline" 
                       size="sm"
-                      className="border-primary/30 hover:border-primary hover:bg-primary/5"
+                      className="h-7 text-xs border-primary/30 hover:border-primary hover:bg-primary/5"
                       onClick={() => window.open(project.links.figma, "_blank")}
                     >
-                      <Figma className="h-4 w-4 mr-2" />
+                      <Figma className="h-3 w-3 mr-1" />
                       Prototype
                     </Button>
                   )}
