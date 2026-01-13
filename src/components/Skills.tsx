@@ -1,88 +1,94 @@
-import { Code2, Database, Brain, Users, Clock, Lightbulb, MessageSquare, Target } from "lucide-react";
+import { 
+  Database, 
+  Code2, 
+  BarChart3, 
+  Globe, 
+  GitBranch,
+  Layout,
+  Lightbulb, 
+  MessageSquare, 
+  Users, 
+  Clock,
+  Eye,
+  Target
+} from "lucide-react";
 
 const Skills = () => {
-  const skillCategories = [
+  const technicalSkills = [
     {
-      title: "Frontend",
-      skills: [
-        { name: "HTML", level: "Advanced", project: "Used in Restaurant Management System" },
-        { name: "CSS", level: "Advanced", project: "Applied across multiple web projects" },
-        { name: "JavaScript", level: "Intermediate", project: "Interactive chatbot & web apps" }
-      ],
-      icon: Code2,
-      color: "primary"
-    },
-    {
-      title: "Backend",
-      skills: [
-        { name: "Java", level: "Intermediate", project: "Used in Restaurant Management System" },
-        { name: "Python", level: "Intermediate", project: "Machine learning projects & automation" }
-      ],
-      icon: Code2,
-      color: "secondary"
-    },
-    {
-      title: "Database & Data",
-      skills: [
-        { name: "MySQL", level: "Intermediate", project: "Database design for various systems" },
-        { name: "Machine Learning", level: "Beginner", project: "Predictive models & data analysis" }
-      ],
+      category: "SQL & Database",
       icon: Database,
-      color: "accent"
+      skills: ["MySQL", "ERDs", "Views & Queries", "Database Design", "Data Modeling"]
+    },
+    {
+      category: "Data & Analytics",
+      icon: BarChart3,
+      skills: ["Python (Data Analysis)", "Power BI", "Data Visualization", "Statistical Analysis"]
+    },
+    {
+      category: "Web Development",
+      icon: Globe,
+      skills: ["HTML5", "CSS3", "JavaScript", "React", "TypeScript"]
+    },
+    {
+      category: "Tools & Workflow",
+      icon: GitBranch,
+      skills: ["Git", "GitHub", "VS Code", "Figma", "API Integration"]
     }
   ];
 
   const softSkills = [
-    { name: "Project Management", icon: Target },
-    { name: "Time Management", icon: Clock },
-    { name: "Problem Solving", icon: Lightbulb },
+    { name: "Problem-solving", icon: Lightbulb },
     { name: "Communication", icon: MessageSquare },
-    { name: "Teamwork", icon: Users }
+    { name: "Team Collaboration", icon: Users },
+    { name: "Time Management", icon: Clock },
+    { name: "Attention to Detail", icon: Eye },
+    { name: "Goal-oriented", icon: Target }
   ];
 
   return (
-    <section id="skills" className="py-20 bg-gradient-to-r from-primary/10 via-accent/10 to-secondary/10">
+    <section id="skills" className="py-20 bg-gradient-to-b from-muted/30 to-background relative z-10">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12 animate-fade-in">
           <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-2">
             Skills & Expertise
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto" />
+          <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-4" />
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            A comprehensive toolkit for building data-driven applications and insights
+          </p>
         </div>
 
         {/* Technical Skills */}
         <div className="mb-16">
-          <h3 className="text-center font-display text-2xl font-semibold text-foreground mb-8">
+          <h3 className="text-center font-display text-xl font-semibold text-foreground mb-8 flex items-center justify-center gap-2">
+            <Code2 className="h-5 w-5 text-primary" />
             Technical Skills
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {skillCategories.map((category, categoryIndex) => {
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+            {technicalSkills.map((category, index) => {
               const Icon = category.icon;
               return (
                 <div 
-                  key={categoryIndex} 
-                  className="bg-card/80 backdrop-blur-sm rounded-2xl border-2 border-border hover:border-primary/60 hover:shadow-hover transition-all duration-300 p-6"
+                  key={index} 
+                  className="bg-card/80 backdrop-blur-sm rounded-xl border border-border hover:border-primary/40 hover:shadow-soft transition-all duration-300 p-5 animate-fade-in group"
+                  style={{ animationDelay: `${index * 100}ms` }}
                 >
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className={`p-2 bg-${category.color}/10 rounded-lg`}>
-                      <Icon className={`h-6 w-6 text-${category.color}`} />
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="p-2 bg-primary/10 rounded-lg group-hover:scale-110 transition-transform duration-300">
+                      <Icon className="h-5 w-5 text-primary" />
                     </div>
-                    <h4 className="text-xl font-bold text-foreground">{category.title}</h4>
+                    <h4 className="text-sm font-bold text-foreground">{category.category}</h4>
                   </div>
                   
-                  <div className="space-y-4">
+                  <div className="flex flex-wrap gap-1.5">
                     {category.skills.map((skill, skillIndex) => (
-                      <div key={skillIndex} className="space-y-1">
-                        <div className="flex items-center justify-between">
-                          <span className="font-semibold text-foreground">{skill.name}</span>
-                          <span className={`text-sm font-medium text-${category.color}`}>
-                            {skill.level}
-                          </span>
-                        </div>
-                        <p className="text-xs text-muted-foreground leading-relaxed">
-                          {skill.project}
-                        </p>
-                      </div>
+                      <span 
+                        key={skillIndex} 
+                        className="px-2.5 py-1 text-xs font-medium bg-muted text-foreground rounded-full border border-border"
+                      >
+                        {skill}
+                      </span>
                     ))}
                   </div>
                 </div>
@@ -93,22 +99,22 @@ const Skills = () => {
 
         {/* Soft Skills */}
         <div>
-          <h3 className="text-center font-display text-2xl font-semibold text-foreground mb-8">
+          <h3 className="text-center font-display text-xl font-semibold text-foreground mb-8 flex items-center justify-center gap-2">
+            <Users className="h-5 w-5 text-accent" />
             Soft Skills
           </h3>
-          <div className="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
+          <div className="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
             {softSkills.map((skill, index) => {
               const Icon = skill.icon;
               return (
                 <div 
                   key={index} 
-                  className="bg-card/80 backdrop-blur-sm rounded-xl border-2 border-accent/20 hover:border-accent/60 hover:shadow-hover transition-all duration-300 hover:-translate-y-1 px-6 py-4"
+                  className="bg-card/80 backdrop-blur-sm rounded-lg border border-accent/20 hover:border-accent/50 hover:shadow-soft transition-all duration-300 hover:-translate-y-1 hover:scale-105 px-4 py-2.5 animate-fade-in"
+                  style={{ animationDelay: `${index * 50}ms` }}
                 >
-                  <div className="flex items-center gap-3">
-                    <div className="p-2 bg-accent/10 rounded-lg">
-                      <Icon className="h-5 w-5 text-accent" />
-                    </div>
-                    <span className="font-semibold text-foreground">
+                  <div className="flex items-center gap-2">
+                    <Icon className="h-4 w-4 text-accent" />
+                    <span className="font-medium text-sm text-foreground">
                       {skill.name}
                     </span>
                   </div>

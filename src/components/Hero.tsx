@@ -1,4 +1,4 @@
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-image.jpg";
 
@@ -19,18 +19,18 @@ const Hero = () => {
               <h1 className="font-display text-5xl md:text-7xl font-bold text-foreground">
                 Ahluma Nkqayi
               </h1>
-              <p className="text-xl md:text-2xl text-muted-foreground font-light">
-                Developer & Innovator
+              <p className="text-xl md:text-2xl text-primary font-semibold">
+                Junior Software Developer | Data & SQL Enthusiast
               </p>
-              <p className="text-base md:text-lg text-foreground/80 font-normal">
-                Focused on full-stack development and data-driven solutions.
+              <p className="text-base md:text-lg text-muted-foreground font-normal leading-relaxed max-w-lg">
+                Diploma-qualified Applications Development graduate with hands-on experience at CAPACITI, building data-driven and web-based solutions that solve real-world problems.
               </p>
             </div>
             
             <div className="flex flex-wrap gap-4">
               <Button 
                 onClick={scrollToProjects}
-                className="bg-gradient-to-r from-primary to-accent hover:shadow-glow transition-all duration-300"
+                className="bg-gradient-to-r from-primary to-accent hover:shadow-glow transition-all duration-300 hover:scale-105 active:scale-95"
                 size="lg"
               >
                 Explore My Work
@@ -39,7 +39,7 @@ const Hero = () => {
               
               <Button 
                 variant="outline"
-                className="border-2 border-primary/30 hover:border-primary/60 hover:bg-primary/5"
+                className="border-2 border-primary/30 hover:border-primary/60 hover:bg-primary/5 hover:scale-105 active:scale-95 transition-all duration-300"
                 size="lg"
                 onClick={() => {
                   const link = document.createElement('a');
@@ -48,6 +48,7 @@ const Hero = () => {
                   link.click();
                 }}
               >
+                <Download className="mr-2 h-5 w-5" />
                 Download CV
               </Button>
             </div>
@@ -70,7 +71,7 @@ const Hero = () => {
         <span className="text-sm text-muted-foreground">Scroll to explore</span>
         <button 
           onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
-          className="cursor-pointer hover:text-primary transition-colors"
+          className="cursor-pointer hover:text-primary transition-colors hover:scale-110 active:scale-95"
           aria-label="Scroll to About section"
         >
           <ArrowDown className="h-8 w-8 text-primary/50" />
