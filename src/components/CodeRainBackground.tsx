@@ -43,14 +43,14 @@ const CodeRainBackground = () => {
     const isMobile = window.innerWidth < 768;
 
     // Initialize drops
-    const dropCount = isMobile ? 15 : 30;
+    const dropCount = isMobile ? 25 : 50;
     dropsRef.current = Array.from({ length: dropCount }, () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
-      speed: (Math.random() * 0.3 + 0.1) * (prefersReducedMotion ? 0.3 : 1),
+      speed: (Math.random() * 0.5 + 0.2) * (prefersReducedMotion ? 0.3 : 1),
       text: codeSnippets[Math.floor(Math.random() * codeSnippets.length)],
-      opacity: Math.random() * 0.06 + 0.02,
-      size: Math.random() * 8 + 10
+      opacity: Math.random() * 0.15 + 0.08,
+      size: Math.random() * 10 + 12
     }));
 
     const animate = () => {
@@ -89,7 +89,7 @@ const CodeRainBackground = () => {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 pointer-events-none z-0"
-      style={{ opacity: 0.6 }}
+      style={{ opacity: 0.8 }}
     />
   );
 };
